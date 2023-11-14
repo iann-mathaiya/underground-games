@@ -1,6 +1,7 @@
 import { Game } from "@/hooks/useGames"
 import PlatformIconList from "./PlatformIconList"
 import CriticScore from "./CriticScore"
+import getCroppedImageUrl from "@/services/image-url"
 
 interface Props {
   game: Game
@@ -12,7 +13,7 @@ export default function GameCard({ game }: Props) {
       <div className='overflow-hidden rounded-lg'>
         <img
           className='aspect-video object-cover object-center rounded-lg transition ease-in-out group-hover:scale-110 duration-500 delay-150'
-          src={game.background_image}
+          src={getCroppedImageUrl(game.background_image)}
           alt={`${game.name} cover image`}
         />
       </div>
