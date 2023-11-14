@@ -24,15 +24,17 @@ function classNames(...classes: string[]) {
 }
 
 export default function Sidebar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [toggleSidebar, setToggleSidebar] = useState(true)
+
+  console.log('the sidebar is', toggleSidebar)
 
   return (
     <section>
-      <Transition.Root show={sidebarOpen} as={Fragment}>
+      <Transition.Root show={toggleSidebar} as={Fragment}>
         <Dialog
           as='div'
-          className='fixed inset-0 flex z-40 md:hidden'
-          onClose={setSidebarOpen}
+          className='inset-0 flex z-40 md:hidden'
+          onClose={setToggleSidebar}
         >
           <Transition.Child
             as={Fragment}
@@ -68,7 +70,7 @@ export default function Sidebar() {
                   <button
                     type='button'
                     className='ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
-                    onClick={() => setSidebarOpen(false)}
+                    onClick={() => setToggleSidebar(false)}
                   >
                     <span className='sr-only'>Close sidebar</span>
                     <XMarkIcon
