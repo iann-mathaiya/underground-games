@@ -1,6 +1,6 @@
 import useData from "./useData"
-import { Game } from "@/lib/schema"
+import { Game, Genre } from "@/lib/schema"
 
-export default function useGames() {
-  return useData<Game>('/games')
+export default function useGames(selectedGenre: Genre | null) {
+  return useData<Game>("/games", { params: { genres: selectedGenre?.slug } }, [selectedGenre?.slug])
 }

@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, useState } from "react"
+import { Fragment, useState } from "react"
 import { Dialog, Menu, Transition } from "@headlessui/react"
 import {
   BellIcon,
@@ -7,6 +7,8 @@ import {
 } from "@heroicons/react/24/outline"
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
 import GenreList from "./GenreList"
+import { Genre } from "@/lib/schema"
+import GameGrid from "./GameGrid"
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -18,8 +20,9 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
 
   return (
     <>
@@ -84,7 +87,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   />
                 </div>
                 <div className='mt-5 flex-1 h-0 overflow-y-auto'>
-                  <GenreList />
+                  <GenreList
+                    onSelectGenre={(genre) => setSelectedGenre(genre)}
+                  />
                 </div>
               </div>
             </Transition.Child>
@@ -103,7 +108,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               />
             </div>
             <div className='mt-5 flex-grow flex flex-col'>
-              <GenreList />
+              <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
             </div>
           </div>
         </div>
@@ -199,7 +204,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <h1 className='text-2xl font-semibold text-gray-900'>
                   Dashboard
                 </h1>
-                {children}
+                <GameGrid selectedGenre={selectedGenre} />
               </div>
             </div>
           </main>
