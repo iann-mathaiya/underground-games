@@ -18,13 +18,7 @@ import { Fragment, ReactNode, useState } from "react"
 import { Dialog, Menu, Transition } from "@headlessui/react"
 import {
   BellIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
-  HomeIcon,
-  InboxIcon,
   Bars3BottomLeftIcon,
-  UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline"
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
@@ -98,10 +92,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   </div>
                 </Transition.Child>
 
-                <div className='flex-shrink-0 flex items-center px-4'>
+                <div className='flex flex-shrink-0 items-center justify-center px-4'>
                   <img
                     className='h-8 w-auto'
-                    src='https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg'
+                    src='src/assets/logo.svg'
                     alt='Workflow'
                   />
                 </div>
@@ -117,10 +111,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className='hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0'>
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className='flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto'>
-            <div className='flex items-center flex-shrink-0 px-4'>
+            <div className='flex items-center justify-center flex-shrink-0  px-4'>
               <img
                 className='h-8 w-auto'
-                src='https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg'
+                src='src/assets/logo.svg'
                 alt='Workflow'
               />
             </div>
