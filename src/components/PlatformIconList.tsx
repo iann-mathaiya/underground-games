@@ -11,7 +11,7 @@ export default function PlatformIconList({ platforms }: Props) {
       {platforms.map((platform) => {
         const Icon = Icons[platform.slug]
 
-        return <Icon className='w-4 h-4 text-slate-500' />
+        return <Icon key={platform.id} className='w-4 h-4 text-slate-500' />
       })}
     </div>
   )
