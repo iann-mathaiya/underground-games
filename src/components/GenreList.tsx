@@ -1,7 +1,7 @@
-import useGames from "@/hooks/useGenres"
+import useGenres from "@/hooks/useGenres"
 
 export default function GenreList() {
-  const { genres } = useGames()
+  const { data: genres } = useGenres()
 
   return (
     <ul>

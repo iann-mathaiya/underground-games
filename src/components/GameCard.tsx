@@ -1,6 +1,6 @@
-import { Game } from "@/hooks/useGames"
-import PlatformIconList from "./PlatformIconList"
+import { Game } from "@/lib/schema"
 import CriticScore from "./CriticScore"
+import PlatformIconList from "./PlatformIconList"
 import getCroppedImageUrl from "@/services/image-url"
 
 interface Props {

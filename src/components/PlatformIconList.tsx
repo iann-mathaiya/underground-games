@@ -1,5 +1,5 @@
+import { Platform } from "@/lib/schema"
 import { Icons } from "./PlatformIcons"
-import { Platform } from "@/hooks/useGames"
 
 interface Props {
   platforms: Platform[]
