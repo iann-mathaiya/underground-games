@@ -87,7 +87,7 @@ export default function RootLayout() {
                   />
                 </div>
                 <div className='mt-5 flex-1 h-0 overflow-y-auto'>
-                  <GenreList
+                  <GenreList selectedGenre={selectedGenre}
                     onSelectGenre={(genre) => setSelectedGenre(genre)}
                   />
                 </div>
@@ -108,7 +108,7 @@ export default function RootLayout() {
               />
             </div>
             <div className='mt-5 flex-grow flex flex-col'>
-              <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+              <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
             </div>
           </div>
         </div>
