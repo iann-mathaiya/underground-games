@@ -11,7 +11,7 @@ export default function GameGrid() {
     <Fragment>
       {error && <p className='text-red-500 text-base font-medium'>{error}</p>}
 
-      <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+      <ul className='list-none grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
         {games.map((game) => (
