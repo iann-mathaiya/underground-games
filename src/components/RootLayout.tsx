@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline"
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
 import GenreList from "./GenreList"
-import { Genre } from "@/lib/schema"
+import { Genre, Platform } from "@/lib/schema"
 import GameGrid from "./GameGrid"
 import PlatformSelector from "./PlatformSelector"
 
@@ -24,6 +24,7 @@ function classNames(...classes: string[]) {
 export default function RootLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
 
   return (
     <>
@@ -205,7 +206,7 @@ export default function RootLayout() {
                 {/* <h1 className='text-2xl font-semibold text-gray-900'>
                   Dashboard
                 </h1> */}
-                <PlatformSelector />
+                <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)} />
                 <GameGrid selectedGenre={selectedGenre} />
               </div>
             </div>

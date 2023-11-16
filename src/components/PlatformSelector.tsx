@@ -1,19 +1,28 @@
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
+  DropdownMenuContent,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "./ui/button"
-import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import usePlatforms from "@/hooks/usePlatforms"
+import { ChevronDownIcon } from "@heroicons/react/24/outline"
+import { Platform } from "@/lib/schema"
 
-export default function PlatformSelector() {
+interface Props {
+  selectedPlatform: Platform | null
+  onSelectPlatform: (platform: Platform) => void
+}
+
+export default function PlatformSelector({
+  selectedPlatform,
+  onSelectPlatform,
+}: Props) {
   const { data: platforms, error } = usePlatforms()
 
-  if(error) return null
+  if (error) return null
 
   return (
     <DropdownMenu>
@@ -24,10 +33,10 @@ export default function PlatformSelector() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Choose Platform</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {platforms.map((platform) => (
-          <DropdownMenuItem key={platform.id}>{platform.name}</DropdownMenuItem>
+          <DropdownMenuCheckboxItem checked={platform.id === selectedPlatform?.id } onCheckedChange={() => onSelectPlatform(platform)} key={platform.id}>{platform.name}</DropdownMenuCheckboxItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
