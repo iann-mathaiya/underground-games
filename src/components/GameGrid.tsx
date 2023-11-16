@@ -19,18 +19,6 @@ export default function GameGrid({ gameQuery }: Props) {
       <ul className='list-none grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-
-        {games.length === 0 && (
-          <div className='col-span-4 flex flex-col items-center justify-center'>
-            <img
-              className='w-40 h-40 object-cover object-center'
-              src='/src/assets/old-game-console.webp'
-              alt=''
-            />
-            <p className='text-slate-500 text-lg lg:text-base font-regular'>No games added in this platform</p>
-          </div>
-        )}
-
         {games.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
