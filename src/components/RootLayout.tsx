@@ -11,6 +11,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline"
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
+import SortSelector from "./SortSelector"
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -212,13 +213,23 @@ export default function RootLayout() {
                 {/* <h1 className='text-2xl font-semibold text-gray-900'>
                   Dashboard
                 </h1> */}
-                <PlatformSelector
-                  selectedPlatform={gameQuery.platform}
-                  onSelectPlatform={(platform) =>
-                    setGameQuery({ ...gameQuery, platform })
-                  }
-                />
-                <GameGrid gameQuery={gameQuery}/>
+
+                <div className="flex items-center gap-4">
+                  <PlatformSelector
+                    selectedPlatform={gameQuery.platform}
+                    onSelectPlatform={(platform) =>
+                      setGameQuery({ ...gameQuery, platform })
+                    }
+                  />
+
+                  <SortSelector
+                    onSelectSortOrder={(sortOrder) =>
+                      setGameQuery({ ...gameQuery, sortOrder })
+                    }
+                  />
+                </div>
+
+                <GameGrid gameQuery={gameQuery} />
               </div>
             </div>
           </main>

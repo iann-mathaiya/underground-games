@@ -21,6 +21,7 @@ export interface Game {
 }
 
 export interface GameQuery {
+  sortOrder: string
   genre: Genre | null
   platform: Platform | null
 }
