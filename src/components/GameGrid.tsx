@@ -3,6 +3,7 @@ import GameCard from "./GameCard"
 import useGames from "@/hooks/useGames"
 import { GameQuery } from "@/lib/schema"
 import GameCardSkeleton from "./GameCardSkeleton"
+import gameConsole from '../assets/old-school-game-console.webp'
 
 interface Props {
   gameQuery: GameQuery
@@ -24,7 +25,7 @@ export default function GameGrid({ gameQuery }: Props) {
           <div className=' col-span-4 flex flex-col items-center justify-center gap-4'>
             <img
               className='w-40 h-40 object-cover object-center'
-              src='/src/assets/old-school-game-console.webp'
+              src={gameConsole}
               alt='Old Game Console'
             />
             <p className='text-lg lg:text-base text-slate-500 font-normal'>

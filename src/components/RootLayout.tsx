@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react"
+import logo from "../assets/logo.svg"
 
 import GameGrid from "./GameGrid"
 import GenreList from "./GenreList"
@@ -83,11 +84,14 @@ export default function RootLayout() {
                   </div>
                 </Transition.Child>
 
-                <a href="/" className='flex flex-shrink-0 items-center justify-center px-4'>
+                <a
+                  href='/'
+                  className='flex flex-shrink-0 items-center justify-center px-4'
+                >
                   <img
                     className='h-8 w-auto'
-                    src='src/assets/logo.svg'
-                    alt='Workflow'
+                    src={logo}
+                    alt='Underground Games Logo'
                   />
                 </a>
                 <div className='mt-5 flex-1 h-0 overflow-y-auto'>
@@ -107,11 +111,14 @@ export default function RootLayout() {
         <div className='hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0'>
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className='flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto'>
-            <a href="/" className='flex items-center justify-center flex-shrink-0  px-4'>
+            <a
+              href='/'
+              className='flex items-center justify-center flex-shrink-0  px-4'
+            >
               <img
                 className='h-8 w-auto'
-                src='src/assets/logo.svg'
-                alt='Workflow'
+                src={logo}
+                alt='Underground Games Logo'
               />
             </a>
             <div className='mt-5 flex-grow flex flex-col'>
@@ -133,8 +140,11 @@ export default function RootLayout() {
               <Bars3BottomLeftIcon className='h-6 w-6' aria-hidden='true' />
             </button>
             <div className='flex-1 px-4 flex justify-between'>
-
-              <SearchInput onSearch={(searchText) => setGameQuery({...gameQuery, searchText})} />
+              <SearchInput
+                onSearch={(searchText) =>
+                  setGameQuery({ ...gameQuery, searchText })
+                }
+              />
 
               <div className='ml-4 flex items-center md:ml-6'>
                 <button
@@ -192,10 +202,9 @@ export default function RootLayout() {
           <main className='flex-1'>
             <div className='py-6'>
               <div className='max-w-7xl mx-auto px-4 space-y-4'>
-
                 <GameHeading gameQuery={gameQuery} />
 
-                <div className="flex items-center gap-4">
+                <div className='flex items-center gap-4'>
                   <PlatformSelector
                     selectedPlatform={gameQuery.platform}
                     onSelectPlatform={(platform) =>
