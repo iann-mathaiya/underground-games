@@ -1,4 +1,9 @@
 import { Fragment, useState } from "react"
+
+import GameGrid from "./GameGrid"
+import GenreList from "./GenreList"
+import { GameQuery } from "@/lib/schema"
+import PlatformSelector from "./PlatformSelector"
 import { Dialog, Menu, Transition } from "@headlessui/react"
 import {
   BellIcon,
@@ -6,10 +11,6 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline"
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
-import GenreList from "./GenreList"
-import { Genre, Platform } from "@/lib/schema"
-import GameGrid from "./GameGrid"
-import PlatformSelector from "./PlatformSelector"
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -23,8 +24,7 @@ function classNames(...classes: string[]) {
 
 export default function RootLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
 
   return (
     <>
@@ -89,8 +89,11 @@ export default function RootLayout() {
                   />
                 </div>
                 <div className='mt-5 flex-1 h-0 overflow-y-auto'>
-                  <GenreList selectedGenre={selectedGenre}
-                    onSelectGenre={(genre) => setSelectedGenre(genre)}
+                  <GenreList
+                    selectedGenre={gameQuery.genre}
+                    onSelectGenre={(genre) =>
+                      setGameQuery({ ...gameQuery, genre })
+                    }
                   />
                 </div>
               </div>
@@ -110,7 +113,10 @@ export default function RootLayout() {
               />
             </div>
             <div className='mt-5 flex-grow flex flex-col'>
-              <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
+              <GenreList
+                selectedGenre={gameQuery.genre}
+                onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+              />
             </div>
           </div>
         </div>
@@ -206,8 +212,13 @@ export default function RootLayout() {
                 {/* <h1 className='text-2xl font-semibold text-gray-900'>
                   Dashboard
                 </h1> */}
-                <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)} />
-                <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
+                <PlatformSelector
+                  selectedPlatform={gameQuery.platform}
+                  onSelectPlatform={(platform) =>
+                    setGameQuery({ ...gameQuery, platform })
+                  }
+                />
+                <GameGrid gameQuery={gameQuery}/>
               </div>
             </div>
           </main>

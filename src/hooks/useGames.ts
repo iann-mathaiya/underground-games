@@ -1,18 +1,15 @@
 import useData from "./useData"
-import { Game, Genre, Platform } from "@/lib/schema"
+import { Game, GameQuery } from "@/lib/schema"
 
-export default function useGames(
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) {
+export default function useGames(gameQuery: GameQuery) {
   return useData<Game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id,
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   )
 }
