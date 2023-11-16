@@ -11,7 +11,9 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import usePlatforms from "@/hooks/usePlatforms"
 
 export default function PlatformSelector() {
-  const { data: platforms } = usePlatforms()
+  const { data: platforms, error } = usePlatforms()
+
+  if(error) return null
 
   return (
     <DropdownMenu>
