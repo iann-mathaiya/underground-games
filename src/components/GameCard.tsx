@@ -2,6 +2,7 @@ import { Game } from "@/lib/schema"
 import CriticScore from "./CriticScore"
 import PlatformIconList from "./PlatformIconList"
 import getCroppedImageUrl from "@/services/image-url"
+import Emoji from "./Emoji"
 
 interface Props {
   game: Game
@@ -19,11 +20,15 @@ export default function GameCard({ game }: Props) {
       </div>
 
       <div className='p-2 space-y-4'>
-        <h2 className='text-lg lg:text-base text-gray-800 font-medium'>
-          {game.name}
-        </h2>
+        <div className="flex items-start justify-between">
+          <h2 className='text-lg lg:text-base text-gray-800 font-medium'>
+            {game.name}
+          </h2>
 
-        <div className="flex items-center justify-between">
+          <Emoji rating={game.rating_top} />
+        </div>
+
+        <div className='flex items-center justify-between'>
           <PlatformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
