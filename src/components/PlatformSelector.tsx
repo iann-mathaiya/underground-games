@@ -7,9 +7,9 @@ import {
   DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "./ui/button"
+import { Platform } from "@/lib/schema"
 import usePlatforms from "@/hooks/usePlatforms"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
-import { Platform } from "@/lib/schema"
 
 interface Props {
   selectedPlatform: Platform | null
