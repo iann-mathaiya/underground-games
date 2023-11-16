@@ -9,6 +9,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
 import GenreList from "./GenreList"
 import { Genre } from "@/lib/schema"
 import GameGrid from "./GameGrid"
+import PlatformSelector from "./PlatformSelector"
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -201,9 +202,10 @@ export default function RootLayout() {
           <main className='flex-1'>
             <div className='py-6'>
               <div className='max-w-7xl mx-auto px-4 space-y-4'>
-                <h1 className='text-2xl font-semibold text-gray-900'>
+                {/* <h1 className='text-2xl font-semibold text-gray-900'>
                   Dashboard
-                </h1>
+                </h1> */}
+                <PlatformSelector />
                 <GameGrid selectedGenre={selectedGenre} />
               </div>
             </div>
