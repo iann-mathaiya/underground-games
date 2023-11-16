@@ -28,7 +28,7 @@ export default function GameGrid({ gameQuery }: Props) {
               alt='Old Game Console'
             />
             <p className='text-lg lg:text-base text-slate-500 font-normal'>
-              No games in this platform
+              No games available
             </p>
             <button
               className='py-1.5 px-3 text-sm text-orange-500 border border-orange-500 bg-orange-50 hover:bg-orange-500 hover:text-white rounded-lg'
