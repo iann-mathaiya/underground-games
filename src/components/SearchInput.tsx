@@ -1,9 +1,22 @@
+import { useRef } from "react"
 import { BsSearch } from "react-icons/bs"
 
-export default function SearchInput() {
+interface Props {
+  onSearch: (searchText: string) => void
+}
+
+export default function SearchInput({ onSearch }: Props) {
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
   return (
     <div className='flex-1 flex'>
-      <form className='w-full flex md:ml-0' action='#' method='GET'>
+      <form
+        className='w-full flex md:ml-0'
+        onSubmit={(event) => {
+          event.preventDefault()
+          if (searchInputRef.current) onSearch(searchInputRef.current.value)
+        }}
+      >
         <label htmlFor='search-field' className='sr-only'>
           Search
         </label>
@@ -13,6 +26,7 @@ export default function SearchInput() {
           </div>
           <input
             id='search-field'
+            ref={searchInputRef}
             className='block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm'
             placeholder='Search games'
             type='search'

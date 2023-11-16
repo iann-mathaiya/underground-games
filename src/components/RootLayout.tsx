@@ -133,7 +133,7 @@ export default function RootLayout() {
             </button>
             <div className='flex-1 px-4 flex justify-between'>
 
-              <SearchInput />
+              <SearchInput onSearch={(searchText) => setGameQuery({...gameQuery, searchText})} />
 
               <div className='ml-4 flex items-center md:ml-6'>
                 <button
