@@ -26,9 +26,9 @@ export default function PlatformSelector({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
         <Button variant='outline' className='space-x-2'>
-          <span>Platforms</span>
+          <span>{selectedPlatform?.name || "Platforms"}</span>
           <ChevronDownIcon className='w-4 h-4 text-slate-500' />
         </Button>
       </DropdownMenuTrigger>
@@ -36,7 +36,13 @@ export default function PlatformSelector({
         <DropdownMenuLabel>Choose Platform</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {platforms.map((platform) => (
-          <DropdownMenuCheckboxItem checked={platform.id === selectedPlatform?.id } onCheckedChange={() => onSelectPlatform(platform)} key={platform.id}>{platform.name}</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={platform.id === selectedPlatform?.id}
+            onCheckedChange={() => onSelectPlatform(platform)}
+            key={platform.id}
+          >
+            {platform.name}
+          </DropdownMenuCheckboxItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

@@ -207,7 +207,7 @@ export default function RootLayout() {
                   Dashboard
                 </h1> */}
                 <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)} />
-                <GameGrid selectedGenre={selectedGenre} />
+                <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
               </div>
             </div>
           </main>
